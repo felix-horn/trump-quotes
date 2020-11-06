@@ -25,16 +25,16 @@ export default function QuoteCard({ quote, onClick }) {
 const QuoteCardWrapper = styled.div`
   margin: 10px;
   padding: 20px;
-  box-shadow: 0 5px 16px #0004;
+  box-shadow: 0 1px 3px #0004;
   display: grid;
   gap: 15px;
   border-radius: 5px;
   position: relative;
+  background-color: #ededed;
 
   &.bookmarked {
-    background-color: lightgray;
-    box-shadow: 0 2px 5px #0002;
-    margin: 20px;
+    background-color: white;
+    box-shadow: 0 1px 3px #0004;
   }
 
   time {
