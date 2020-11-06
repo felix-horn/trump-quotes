@@ -29,45 +29,31 @@ function App() {
   }
 
   function bookmarkQuote() {
-    setBookmarkedQuotes([...bookmarkedQuotes, quote])
+    setBookmarkedQuotes([...bookmarkedQuotes, { ...quote, isBookmarked: true }])
   }
 
-  function deleteBookmark(event) {
-    const bookmarkedQuotesAndNewQuote = [...bookmarkedQuotes, quote]
-    /* bookmarkedQuotesAndNewQuote.map() */
-    console.log('EVENT: ' + event.currentTarget.id)
+  function deleteBookmark(idToBeDeleted) {
     setBookmarkedQuotes(
-      bookmarkedQuotesAndNewQuote.filter(
-        (quotes) => quotes.isBookmarked === true
-      )
+      bookmarkedQuotes.filter((quotes) => quotes.id !== idToBeDeleted)
     )
   }
 
   return (
     <Wrapper>
-      <QuoteCard
-        date={quote.date}
-        text={quote.text}
-        id={quote.id}
-        isBookmarked={quote.isBookmarked}
-        onClick={bookmarkQuote}
-      />
+      <QuoteCard quote={quote} onClick={bookmarkQuote} />
 
       <NewQuoteButton onClick={getNewQuote}>Get new Quote</NewQuoteButton>
-      {/* <div className="bookmarked"> */}
+
       {bookmarkedQuotes.map((quote) => {
         return (
           <QuoteCard
-            className="bookmarked"
-            date={quote.date}
-            text={quote.text}
             key={quote.id}
-            isBookmarked={quote.isBookmarked}
-            onClick={deleteBookmark}
+            className="bookmarked"
+            quote={quote}
+            onClick={() => deleteBookmark(quote.id)}
           />
         )
       })}
-      {/* </div> */}
     </Wrapper>
   )
 }
@@ -76,41 +62,16 @@ export default App
 
 const Wrapper = styled.div`
   display: grid;
+  grid-template-rows: 200px auto;
   font-family: sans-serif;
 `
-
-/* const QuoteCard = styled.div`
-  margin: 10px;
-  padding: 20px;
-  box-shadow: 0 5px 16px #0004;
-  display: grid;
-  gap: 15px;
-  border-radius: 5px;
-  position: relative;
-
-  time {
-    font-size: 0.8rem;
-  }
-
-  blockquote {
-    font-style: italic;
-  }
-
-  .bookmarkIcon {
-    position: absolute;
-    right: 15px;
-    top: 15px;
-  }
-` */
-
 const NewQuoteButton = styled.button`
-  margin: 15px auto;
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  border-color: lightgray;
-  box-shadow: 0 15px 20px #0004;
-  background-color: white;
-  font-size: 1rem;
   z-index: 200;
+  box-shadow: 0 15px 20px #0004;
+  margin: 15px auto;
+  border-radius: 5px;
+  border: solid 1px lightgray;
+  background-color: white;
+  padding: 10px;
+  font-size: 1rem;
 `
