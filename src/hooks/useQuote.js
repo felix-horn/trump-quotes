@@ -41,7 +41,6 @@ export default function useQuote() {
       { ...newQuote, isBookmarked: true },
       ...bookmarkedQuotes,
     ])
-    /* saveLocally('bookmarkedQuotes', bookmarkedQuotes) */
   }
 
   function deleteBookmark(idToBeDeleted) {

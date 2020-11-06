@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro'
 import QuoteCard from './QuoteCard'
 import useQuote from './hooks/useQuote'
+import { ReactComponent as Reload } from './assets/reload.svg'
 
 function App() {
   const {
@@ -15,7 +16,9 @@ function App() {
     <Wrapper>
       <QuoteCard quote={newQuote} onClick={bookmarkQuote} />
 
-      <NewQuoteButton onClick={getNewQuote}>Get new Quote</NewQuoteButton>
+      <NewQuoteButton onClick={getNewQuote}>
+        <Reload className="reload" /> Get new Quote
+      </NewQuoteButton>
 
       {bookmarkedQuotes.map((quote) => {
         return (
@@ -36,15 +39,30 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-rows: 200px auto;
   font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
 `
 const NewQuoteButton = styled.button`
   z-index: 200;
-  box-shadow: 0 15px 20px #0004;
+  box-shadow: 0 7px 15px #a3aab5;
   margin: 15px auto;
-  border-radius: 5px;
-  border: solid 1px lightgray;
+  border-radius: 20px;
+  border: none;
+  height: 40px;
   background-color: white;
-  padding: 10px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 500;
+  color: #4885ed;
+
+  .reload {
+    fill: #4885ed;
+  }
+
+  &:hover > .reload {
+    transition: transform 1s;
+    transform: rotate(-180deg);
+  }
 `
