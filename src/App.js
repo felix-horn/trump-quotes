@@ -64,5 +64,6 @@ const NewQuoteButton = styled.button`
   &:hover > .reload {
     transition: transform 1s;
     transform: rotate(-180deg);
+    border: none;
   }
 `
