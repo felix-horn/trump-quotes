@@ -1,13 +1,7 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components/macro'
-import { va as uuid } from 'uuid'
 import getQuotes from './services/getQuote'
-import { ReactComponent as Bookmark } from './assets/bookmark_border.svg'
-import dayjs from 'dayjs'
-import advancedFormat from 'dayjs/plugin/advancedFormat'
 import QuoteCard from './QuoteCard'
-
-dayjs.extend(advancedFormat)
 
 function App() {
   const [quote, setQuote] = useState({})
@@ -48,7 +42,6 @@ function App() {
         return (
           <QuoteCard
             key={quote.id}
-            className="bookmarked"
             quote={quote}
             onClick={() => deleteBookmark(quote.id)}
           />
