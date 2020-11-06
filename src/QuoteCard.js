@@ -43,6 +43,7 @@ const QuoteCardWrapper = styled.div`
 
   blockquote {
     font-style: italic;
+    margin: 20px;
   }
 
   .bookmarkIcon {

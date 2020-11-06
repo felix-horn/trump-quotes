@@ -1,36 +1,15 @@
-import { useEffect, useState } from 'react'
 import styled from 'styled-components/macro'
-import getQuotes from './services/getQuote'
 import QuoteCard from './QuoteCard'
+import useQuote from './hooks/useQuote'
 
 function App() {
-  const [quote, setQuote] = useState({})
-  const [bookmarkedQuotes, setBookmarkedQuotes] = useState([])
-
-  useEffect(() => {
-    getNewQuote()
-  }, [])
-
-  function getNewQuote() {
-    getQuotes().then((data) =>
-      setQuote({
-        date: data.appeared_at,
-        text: data.value,
-        id: data.quote_id,
-        isBookmarked: false,
-      })
-    )
-  }
-
-  function bookmarkQuote() {
-    setBookmarkedQuotes([...bookmarkedQuotes, { ...quote, isBookmarked: true }])
-  }
-
-  function deleteBookmark(idToBeDeleted) {
-    setBookmarkedQuotes(
-      bookmarkedQuotes.filter((quotes) => quotes.id !== idToBeDeleted)
-    )
-  }
+  const {
+    quote,
+    bookmarkedQuotes,
+    getNewQuote,
+    bookmarkQuote,
+    deleteBookmark,
+  } = useQuote()
 
   return (
     <Wrapper>
@@ -67,4 +46,5 @@ const NewQuoteButton = styled.button`
   background-color: white;
   padding: 10px;
   font-size: 1rem;
+  font-weight: bold;
 `
