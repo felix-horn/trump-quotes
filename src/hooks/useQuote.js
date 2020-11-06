@@ -1,19 +1,33 @@
 import { useEffect, useState } from 'react'
+import saveLocally from '../lib/saveLocally'
+import loadLocally from '../lib/loadLocally'
 import getQuotes from '../services/getQuote'
 
 export default function useQuote() {
-  const [quote, setQuote] = useState({})
-  const [bookmarkedQuotes, setBookmarkedQuotes] = useState([])
+  const [newQuote, setNewQuote] = useState({})
+  const [bookmarkedQuotes, setBookmarkedQuotes] = useState(
+    loadLocally('bookmarkedQuotes') ?? []
+  )
 
   useEffect(() => {
     getNewQuote()
   }, [])
 
-  return { quote, bookmarkedQuotes, getNewQuote, bookmarkQuote, deleteBookmark }
+  useEffect(() => {
+    saveLocally('bookmarkedQuotes', bookmarkedQuotes)
+  }, [bookmarkedQuotes])
+
+  return {
+    newQuote,
+    bookmarkedQuotes,
+    getNewQuote,
+    bookmarkQuote,
+    deleteBookmark,
+  }
 
   function getNewQuote() {
     getQuotes().then((data) =>
-      setQuote({
+      setNewQuote({
         date: data.appeared_at,
         text: data.value,
         id: data.quote_id,
@@ -23,7 +37,11 @@ export default function useQuote() {
   }
 
   function bookmarkQuote() {
-    setBookmarkedQuotes([{ ...quote, isBookmarked: true }, ...bookmarkedQuotes])
+    return setBookmarkedQuotes([
+      { ...newQuote, isBookmarked: true },
+      ...bookmarkedQuotes,
+    ])
+    /* saveLocally('bookmarkedQuotes', bookmarkedQuotes) */
   }
 
   function deleteBookmark(idToBeDeleted) {

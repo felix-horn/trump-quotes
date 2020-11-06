@@ -4,7 +4,7 @@ import useQuote from './hooks/useQuote'
 
 function App() {
   const {
-    quote,
+    newQuote,
     bookmarkedQuotes,
     getNewQuote,
     bookmarkQuote,
@@ -13,7 +13,7 @@ function App() {
 
   return (
     <Wrapper>
-      <QuoteCard quote={quote} onClick={bookmarkQuote} />
+      <QuoteCard quote={newQuote} onClick={bookmarkQuote} />
 
       <NewQuoteButton onClick={getNewQuote}>Get new Quote</NewQuoteButton>
 
