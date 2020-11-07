@@ -1,9 +1,11 @@
 import styled from 'styled-components/macro'
-import QuoteCard from './QuoteCard'
 import useQuote from './hooks/useQuote'
-import { ReactComponent as Reload } from './assets/reload.svg'
+import QuoteCard from './QuoteCard'
+import Button from './Button.js'
+import Footer from './Footer'
+import Header from './Header'
 
-function App() {
+export default function App() {
   const {
     newQuote,
     bookmarkedQuotes,
@@ -13,57 +15,30 @@ function App() {
   } = useQuote()
 
   return (
-    <Wrapper>
-      <QuoteCard quote={newQuote} onClick={bookmarkQuote} />
+    <AppWrapper>
+      <Header />
+      <ContentWrapper>
+        <QuoteCard quote={newQuote} onClick={bookmarkQuote} />
 
-      <NewQuoteButton onClick={getNewQuote}>
-        <Reload className="reload" /> Get new Quote
-      </NewQuoteButton>
+        <Button onClick={getNewQuote}>Get new Quote</Button>
 
-      {bookmarkedQuotes.map((quote) => {
-        return (
+        {bookmarkedQuotes.map((quote) => (
           <QuoteCard
             key={quote.id}
             quote={quote}
             onClick={() => deleteBookmark(quote.id)}
           />
-        )
-      })}
-    </Wrapper>
+        ))}
+      </ContentWrapper>
+      <Footer />
+    </AppWrapper>
   )
 }
 
-export default App
+const AppWrapper = styled.div``
 
-const Wrapper = styled.div`
+const ContentWrapper = styled.div`
+  margin-top: 60px;
   display: grid;
   grid-template-rows: 200px auto;
-  font-family: sans-serif;
-  font-family: 'Roboto', sans-serif;
-`
-const NewQuoteButton = styled.button`
-  z-index: 200;
-  box-shadow: 0 7px 15px #a3aab5;
-  margin: 15px auto;
-  border-radius: 20px;
-  border: none;
-  height: 40px;
-  background-color: white;
-  padding: 10px 15px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #4885ed;
-
-  .reload {
-    fill: #4885ed;
-  }
-
-  &:hover > .reload {
-    transition: transform 1s;
-    transform: rotate(-180deg);
-    border: none;
-  }
 `
