@@ -46,7 +46,7 @@ const NavButton = styled.button`
   background-color: #ffffffee;
   padding: 4px 12px;
   display: grid;
-  justify-items: center;
+  place-items: center;
   gap: 2px;
   font-size: 70%;
   font-weight: 300;

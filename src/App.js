@@ -3,6 +3,7 @@ import useQuote from './hooks/useQuote'
 import QuoteCard from './QuoteCard'
 import Button from './Button.js'
 import Footer from './Footer'
+import Header from './Header'
 
 export default function App() {
   const {
@@ -15,6 +16,7 @@ export default function App() {
 
   return (
     <AppWrapper>
+      <Header />
       <ContentWrapper>
         <QuoteCard quote={newQuote} onClick={bookmarkQuote} />
 
@@ -36,6 +38,7 @@ export default function App() {
 const AppWrapper = styled.div``
 
 const ContentWrapper = styled.div`
+  margin-top: 60px;
   display: grid;
   grid-template-rows: 200px auto;
 `

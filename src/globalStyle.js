@@ -20,4 +20,8 @@ input, textarea, button, select {
     font-size: 1em;
 }
 
+h1, h2 {
+    margin: 0;
+}
+
 `

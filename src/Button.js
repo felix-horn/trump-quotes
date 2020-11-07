@@ -11,7 +11,7 @@ export default function Button({ onClick, children }) {
 }
 
 const ButtonStyled = styled.button`
-  z-index: 200;
+  z-index: 100;
   box-shadow: 0 7px 15px #a3aab5;
   margin: 15px auto;
   border-radius: 20px;
