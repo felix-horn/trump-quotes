@@ -19,7 +19,7 @@ export default function Footer() {
       </NavButton>
       <NavButton exact to="/bookmarks">
         <Bookmarks className="bookmarks" />
-        Bookmars
+        Bookmarks
       </NavButton>
       <NavButton exact to="/add">
         <Add className="add" />

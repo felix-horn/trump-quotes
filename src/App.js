@@ -1,51 +1,24 @@
 import styled from 'styled-components/macro'
 import { Route, Switch } from 'react-router-dom'
 
-import useQuote from './hooks/useQuote'
-
 import Header from './Header'
-import QuoteCard from './QuoteCard'
-import Button from './Button.js'
 import Footer from './Footer'
 import PageQuote from './PageQuote'
+import PageBookmarks from './PageBookmarks'
+import PageAdd from './PageAdd'
 
 export default function App() {
-  const {
-    newQuote,
-    bookmarkedQuotes,
-    getNewQuote,
-    bookmarkQuote,
-    deleteBookmark,
-  } = useQuote()
-
   return (
     <AppWrapper>
       <Header />
-
-      <ContentWrapper>
-        <Switch>
-          <Route exact path="/" component={PageQuote} />
-          <Route exact path="/bookmarks">
-            {bookmarkedQuotes.map((quote) => (
-              <QuoteCard
-                key={quote.id}
-                quote={quote}
-                onClick={() => deleteBookmark(quote.id)}
-              />
-            ))}
-          </Route>
-          <Route exact path="/add"></Route>
-        </Switch>
-      </ContentWrapper>
+      <Switch>
+        <Route exact path="/" component={PageQuote} />
+        <Route exact path="/bookmarks" component={PageBookmarks} />
+        <Route exact path="/add" component={PageAdd} />
+      </Switch>
       <Footer />
     </AppWrapper>
   )
 }
 
 const AppWrapper = styled.div``
-
-const ContentWrapper = styled.div`
-  /* margin-top: 60px;
-  display: grid;
-  grid-template-rows: 200px auto; */
-`

@@ -36,9 +36,7 @@ const vH = window.innerHeight - 70 - 60
 
 const PageQuoteWrapper = styled.div`
   display: grid;
-  /* height: calc(${vH}px - 70px - 60); */
   height: ${vH}px;
-  /* height: 600px; */
   grid-template-rows: 1fr 50px 100px;
   place-items: center;
 
