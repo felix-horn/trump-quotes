@@ -37,10 +37,17 @@ export default function useQuote() {
   }
 
   function bookmarkQuote() {
-    return setBookmarkedQuotes([
+    const bookmarkedQuotesWithDuplicates = [
       { ...newQuote, isBookmarked: true },
       ...bookmarkedQuotes,
-    ])
+    ]
+
+    return setBookmarkedQuotes(
+      bookmarkedQuotesWithDuplicates.reduce((acc, cur) => {
+        const accIDs = acc.map((item) => item.id)
+        return accIDs.includes(cur.id) ? acc : [...acc, cur]
+      }, [])
+    )
   }
 
   function deleteBookmark(idToBeDeleted) {

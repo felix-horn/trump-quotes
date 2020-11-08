@@ -7,6 +7,7 @@ import Header from './Header'
 import QuoteCard from './QuoteCard'
 import Button from './Button.js'
 import Footer from './Footer'
+import PageQuote from './PageQuote'
 
 export default function App() {
   const {
@@ -23,11 +24,7 @@ export default function App() {
 
       <ContentWrapper>
         <Switch>
-          <Route exact path="/">
-            <QuoteCard quote={newQuote} onClick={bookmarkQuote} />
-
-            <Button onClick={getNewQuote}>Get new Quote</Button>
-          </Route>
+          <Route exact path="/" component={PageQuote} />
           <Route exact path="/bookmarks">
             {bookmarkedQuotes.map((quote) => (
               <QuoteCard
@@ -48,7 +45,7 @@ export default function App() {
 const AppWrapper = styled.div``
 
 const ContentWrapper = styled.div`
-  margin-top: 60px;
+  /* margin-top: 60px;
   display: grid;
-  grid-template-rows: 200px auto;
+  grid-template-rows: 200px auto; */
 `

@@ -9,11 +9,11 @@ export default createGlobalStyle`
 }
 
 body {
-    margin: 0 auto;
+    margin: 0;
     font-family: 'Roboto', sans-serif;
     width: 100%;
     max-width: 450px;
-    padding: 20px;
+    padding: 70px 20px 60px;
     }
 
 input, textarea, button, select, link {
