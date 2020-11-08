@@ -16,7 +16,7 @@ export default function QuoteCard({ quote, onClick }) {
         className={`bookmarkIcon + ${quote.isBookmarked ? 'bookmarked' : ''}`}
         onClick={onClick}
       />
-      <time>{dayjs(quote.date).format(' MMM. Do YYYY')}:</time>
+      <time>{dayjs(quote.date).format(' MMM Do, YYYY')}:</time>
       <blockquote>"{quote.text}"</blockquote>
     </QuoteCardWrapper>
   )

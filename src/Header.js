@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export default function Header() {
   return (
     <HeaderStyled>
-      <h2>Quotes by</h2>
+      <h2>WTF Quotes by</h2>
       <h1>Tronald Dump</h1>
     </HeaderStyled>
   )

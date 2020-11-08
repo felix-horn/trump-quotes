@@ -1,22 +1,14 @@
-import { v4 as uuid } from 'uuid'
 import { useState } from 'react'
 import styled from 'styled-components/macro'
-import { ReactComponent as AddComment } from './assets/add_comment-outlined.svg'
+import { v4 as uuid } from 'uuid'
 
 import useQuote from './hooks/useQuote'
-import { Redirect } from 'react-router-dom'
 
 import Button from './Button'
+import { ReactComponent as AddComment } from './assets/add_comment-outlined.svg'
 
 export default function PageAdd() {
-  const {
-    newQuote,
-    getNewQuote,
-    bookmarkQuote,
-    bookmarkedQuotes,
-    deleteBookmark,
-    setBookmarkedQuotes,
-  } = useQuote()
+  const { bookmarkedQuotes, setBookmarkedQuotes } = useQuote()
 
   const [newCustomQuote, setNewCustomQuote] = useState({
     date: Date.now(),
@@ -25,10 +17,8 @@ export default function PageAdd() {
     isBookmarked: true,
   })
 
-  function addCustomQuote(event) {
-    // event.preventDefault()
+  function addCustomQuote() {
     setBookmarkedQuotes([newCustomQuote, ...bookmarkedQuotes])
-    // return <Redirect to="/bookmarks" />
   }
 
   function handleChange(event) {
@@ -39,38 +29,37 @@ export default function PageAdd() {
   }
 
   return (
-    <PageAddWrapper>
-      <FormWrapper action="/bookmarks" onSubmit={addCustomQuote}>
-        <h1>Add your own Quote</h1>
-        <label>
-          <div>Quote: </div>
-          <textarea
-            name="text"
-            placeholder="Type you quote here."
-            onChange={handleChange}
-            value={newCustomQuote.text}
-            rows="3"
-            cols="20"
-          />
-        </label>
-        <label>
-          <div>Quote's Date: </div>
-          <input
-            type="date"
-            name="date"
-            onChange={handleChange}
-            value={newCustomQuote.date}
-          />
-        </label>
-        <Button>
-          <AddComment className="buttonIcon" />
-          Add Quote
-        </Button>
-      </FormWrapper>
-    </PageAddWrapper>
+    <FormWrapper action="/bookmarks" onSubmit={addCustomQuote}>
+      <h1>Add your own Quote</h1>
+      <label>
+        <div>Quote: </div>
+        <textarea
+          name="text"
+          placeholder="Type you quote here."
+          onChange={handleChange}
+          value={newCustomQuote.text}
+          rows="3"
+          cols="30"
+          required
+        />
+      </label>
+      <label>
+        <div>Quote's Date: </div>
+        <input
+          type="date"
+          name="date"
+          onChange={handleChange}
+          value={newCustomQuote.date}
+          required
+        />
+      </label>
+      <Button>
+        <AddComment className="buttonIcon" />
+        Add Quote
+      </Button>
+    </FormWrapper>
   )
 }
-const PageAddWrapper = styled.div``
 
 const FormWrapper = styled.form`
   margin: 20px auto;
@@ -102,7 +91,6 @@ const FormWrapper = styled.form`
 
     &:focus {
       border: solid 1px #4885ed;
-      background-color: yellow;
     }
   }
 
