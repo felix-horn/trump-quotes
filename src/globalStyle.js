@@ -16,8 +16,9 @@ body {
     padding: 20px;
     }
 
-input, textarea, button, select {
+input, textarea, button, select, link {
     font-size: 1em;
+    color: black;
 }
 
 h1, h2 {

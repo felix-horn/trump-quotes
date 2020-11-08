@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro'
+import { NavLink } from 'react-router-dom'
 
 import { ReactComponent as Quote } from './assets/quote-outlined.svg'
 import quote_filled from './assets/quote-filled.svg'
@@ -12,16 +13,16 @@ import add_filled from './assets/add-filled.svg'
 export default function Footer() {
   return (
     <NavContainer>
-      <NavButton>
-        <Quote />
+      <NavButton exact to="/">
+        <Quote className="quote" />
         Discover
       </NavButton>
-      <NavButton>
-        <Bookmarks />
+      <NavButton exact to="/bookmarks">
+        <Bookmarks className="bookmarks" />
         Bookmars
       </NavButton>
-      <NavButton>
-        <Add />
+      <NavButton exact to="/add">
+        <Add className="add" />
         Add
       </NavButton>
     </NavContainer>
@@ -40,18 +41,29 @@ const NavContainer = styled.footer`
   display: flex;
   justify-content: space-between;
 `
-const NavButton = styled.button`
+const NavButton = styled(NavLink)`
   margin: 5px;
   border: none;
-  background-color: #ffffffee;
+  background-color: transparent;
   padding: 4px 12px;
   display: grid;
   place-items: center;
   gap: 2px;
+  text-decoration: none;
+  color: black;
   font-size: 70%;
   font-weight: 300;
 
-  &.active {
-    background: skyblue;
+  &.active .quote {
+    background-image: url(${quote_filled});
+  }
+
+  &.active .bookmarks {
+    background-image: url(${bookmarks_filled});
+  }
+
+  &.active .add {
+    background-image: url(${add_filled});
+    fill: transparent;
   }
 `
