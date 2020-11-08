@@ -23,6 +23,7 @@ export default function useQuote() {
     getNewQuote,
     bookmarkQuote,
     deleteBookmark,
+    setBookmarkedQuotes,
   }
 
   function getNewQuote() {
