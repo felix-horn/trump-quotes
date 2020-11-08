@@ -1,9 +1,12 @@
 import styled from 'styled-components/macro'
+import { Route, Switch } from 'react-router-dom'
+
 import useQuote from './hooks/useQuote'
+
+import Header from './Header'
 import QuoteCard from './QuoteCard'
 import Button from './Button.js'
 import Footer from './Footer'
-import Header from './Header'
 
 export default function App() {
   const {
@@ -17,18 +20,25 @@ export default function App() {
   return (
     <AppWrapper>
       <Header />
+
       <ContentWrapper>
-        <QuoteCard quote={newQuote} onClick={bookmarkQuote} />
+        <Switch>
+          <Route exact path="/">
+            <QuoteCard quote={newQuote} onClick={bookmarkQuote} />
 
-        <Button onClick={getNewQuote}>Get new Quote</Button>
-
-        {bookmarkedQuotes.map((quote) => (
-          <QuoteCard
-            key={quote.id}
-            quote={quote}
-            onClick={() => deleteBookmark(quote.id)}
-          />
-        ))}
+            <Button onClick={getNewQuote}>Get new Quote</Button>
+          </Route>
+          <Route exact path="/bookmarks">
+            {bookmarkedQuotes.map((quote) => (
+              <QuoteCard
+                key={quote.id}
+                quote={quote}
+                onClick={() => deleteBookmark(quote.id)}
+              />
+            ))}
+          </Route>
+          <Route exact path="/add"></Route>
+        </Switch>
       </ContentWrapper>
       <Footer />
     </AppWrapper>
