@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro'
 
 import useQuote from './hooks/useQuote'
+import { ReactComponent as Reload } from './assets/reload.svg'
 
 import QuoteCard from './QuoteCard'
 import Button from './Button.js'
@@ -18,7 +19,10 @@ export default function PageQuote() {
           Quote has been Bookmarked.
         </BookmarkedNotification>
       )}
-      <Button onClick={getNewQuote}>Get new Quote</Button>
+      <Button onClick={getNewQuote}>
+        <Reload className="reload" />
+        Get new Quote
+      </Button>
     </PageQuoteWrapper>
   )
 
@@ -43,6 +47,10 @@ const PageQuoteWrapper = styled.div`
   Button {
     align-self: flex-start;
     grid-area: 3;
+
+    .reload {
+      fill: #4885ed;
+    }
   }
 `
 const BookmarkedNotification = styled.div`

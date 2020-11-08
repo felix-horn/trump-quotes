@@ -19,4 +19,8 @@ export default function PageBookmarks() {
     </PageBookmarksWrapper>
   )
 }
-const PageBookmarksWrapper = styled.div``
+const PageBookmarksWrapper = styled.div`
+  display: grid;
+  margin-top: 10px;
+  justify-items: center;
+`

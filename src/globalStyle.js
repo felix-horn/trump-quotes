@@ -16,7 +16,8 @@ body {
     padding: 70px 20px 60px;
     }
 
-input, textarea, button, select, link {
+input, textarea, button, select, link, textarea {
+    font-family: 'Roboto', sans-serif;
     font-size: 1em;
     color: black;
 }

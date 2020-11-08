@@ -1,13 +1,7 @@
 import styled from 'styled-components/macro'
-import { ReactComponent as Reload } from './assets/reload.svg'
 
 export default function Button({ onClick, children }) {
-  return (
-    <ButtonStyled onClick={onClick}>
-      <Reload className="reload" />
-      {children}
-    </ButtonStyled>
-  )
+  return <ButtonStyled onClick={onClick}>{children}</ButtonStyled>
 }
 
 const ButtonStyled = styled.button`
@@ -25,10 +19,6 @@ const ButtonStyled = styled.button`
   font-size: 1rem;
   font-weight: 500;
   color: #4885ed;
-
-  .reload {
-    fill: #4885ed;
-  }
 
   &:hover > .reload {
     transition: transform 1s;
