@@ -1,10 +1,10 @@
 import styled from 'styled-components/macro'
 
-import useQuote from './hooks/useQuote'
-import { ReactComponent as Reload } from './assets/reload.svg'
+import useQuote from '../hooks/useQuote'
+import { ReactComponent as Reload } from '../assets/reload.svg'
 
-import QuoteCard from './QuoteCard'
-import Button from './Button.js'
+import QuoteCard from '../02.molecules/QuoteCard'
+import Button from '../01.atoms/Button.js'
 import { useState } from 'react'
 
 export default function PageQuote() {

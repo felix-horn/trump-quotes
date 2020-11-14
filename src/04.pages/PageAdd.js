@@ -2,10 +2,10 @@ import { useState } from 'react'
 import styled from 'styled-components/macro'
 import { v4 as uuid } from 'uuid'
 
-import useQuote from './hooks/useQuote'
+import useQuote from '../hooks/useQuote'
 
-import Button from './Button'
-import { ReactComponent as AddComment } from './assets/add_comment-outlined.svg'
+import Button from '../01.atoms/Button'
+import { ReactComponent as AddComment } from '../assets/add_comment-outlined.svg'
 
 export default function PageAdd() {
   const { bookmarkedQuotes, setBookmarkedQuotes } = useQuote()

@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
-import { ReactComponent as Bookmark } from './assets/bookmark-outlined.svg'
-import bookmark_filled from './assets/bookmark-filled.svg'
+import { ReactComponent as Bookmark } from '../assets/bookmark-outlined.svg'
+import bookmark_filled from '../assets/bookmark-filled.svg'
 import dayjs from 'dayjs'
 import advancedFormat from 'dayjs/plugin/advancedFormat'
 

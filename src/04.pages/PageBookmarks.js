@@ -1,8 +1,8 @@
 import styled from 'styled-components/macro'
 
-import useQuote from './hooks/useQuote'
+import useQuote from '../hooks/useQuote'
 
-import QuoteCard from './QuoteCard'
+import QuoteCard from '../02.molecules/QuoteCard'
 
 export default function PageBookmarks() {
   const { bookmarkedQuotes, deleteBookmark } = useQuote()
