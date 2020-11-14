@@ -1,14 +1,14 @@
 import styled from 'styled-components/macro'
 import { NavLink } from 'react-router-dom'
 
-import { ReactComponent as Quote } from './assets/quote-outlined.svg'
-import quote_filled from './assets/quote-filled.svg'
+import { ReactComponent as Quote } from '../assets/quote-outlined.svg'
+import quote_filled from '../assets/quote-filled.svg'
 
-import { ReactComponent as Bookmarks } from './assets/bookmarks-outlined.svg'
-import bookmarks_filled from './assets/bookmarks-filled.svg'
+import { ReactComponent as Bookmarks } from '../assets/bookmarks-outlined.svg'
+import bookmarks_filled from '../assets/bookmarks-filled.svg'
 
-import { ReactComponent as Add } from './assets/add-outlined.svg'
-import add_filled from './assets/add-filled.svg'
+import { ReactComponent as Add } from '../assets/add-outlined.svg'
+import add_filled from '../assets/add-filled.svg'
 
 export default function Footer() {
   return (
@@ -63,7 +63,7 @@ const NavButton = styled(NavLink)`
   }
 
   &.active .add {
-    background-image: url(${add_filled});
     fill: transparent;
+    background-image: url(${add_filled});
   }
 `
