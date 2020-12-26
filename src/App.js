@@ -13,8 +13,8 @@ export default function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={PageQuote} />
-        <Route exact path="/bookmarks" component={PageBookmarks} />
-        <Route exact path="/add" component={PageAdd} />
+        <Route path="/bookmarks" component={PageBookmarks} />
+        <Route path="/add" component={PageAdd} />
       </Switch>
       <Footer />
     </AppWrapper>
